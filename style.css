@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #eaeaea;
+    height: 100vh;
+}
+
+/* 모바일 프레임 */
+.mobile-frame {
+    width: 414px;
+    height: 760px;
+    border-radius: 40px;
+    overflow: hidden;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    position: relative;
+
+    background-image: url("img/background.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 아이콘 */
+.icon {
+    width: 112px;
+    height: 112px;
+    position: absolute;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    z-index: 1; /* 아이콘 기본 레이어 */
+}
+
+.icon:active {
+    transform: scale(0.9);
+}
+
+/* ===== 팝업 ===== */
+
+.popup-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999; /* 가장 위로 */
+}
+
+.popup {
+    width: 85%;
+    height: 70%;
+    background: white;
+    border-radius: 20px;
+    position: relative;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 스크롤 영역 */
+.popup-content {
+    margin-top: 40px;
+    overflow-y: auto;
+}
+
+/* 닫기 버튼 */
+.close-btn {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
