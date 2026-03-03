@@ -32,80 +32,44 @@ if (mobileFrame) {
     const FRAME_WIDTH = mobileFrame.clientWidth;
     const FRAME_HEIGHT = mobileFrame.clientHeight;
 
-    icons.forEach(iconData => {
+icons.forEach((iconData, index) => {
 
-        const img = document.createElement("img");
-        img.src = iconData.src;
-        img.classList.add("icon");
+    const img = document.createElement("img");
+    img.src = iconData.src;
+    img.classList.add("icon");
 
-        img.onload = () => {
-            const iconWidth = img.naturalWidth;
-            const iconHeight = img.naturalHeight;
+    // 📌 Figma 좌표 0.5배 적용
+    const positions = [
+        { left: 603 * 0.5, top: 556 * 0.5 },  // icon1 (일러스트2 3)
+        { left: 191 * 0.5, top: 434 * 0.5 },  // icon2 (일러스트2 1)
+        { left: 110 * 0.5, top: 1286 * 0.5 }, // icon3 (일러스트2 4)
+        { left: 37 * 0.5,  top: 747 * 0.5 },  // icon4 (일러스트2 6)
+        { left: 640 * 0.5, top: 1206 * 0.5 }  // icon5 (일러스트2 5)
+    ];
 
-            const TOP_LIMIT = FRAME_HEIGHT * 0.4;
-            const placedIcons = document.querySelectorAll(".icon");
+    img.style.left = `${positions[index].left}px`;
+    img.style.top = `${positions[index].top}px`;
 
-            let randomX, randomY;
-            let overlapping;
-            let attempts = 0;
+    img.addEventListener("click", () => {
+        popupContent.innerHTML = "";
 
-            do {
-                overlapping = false;
+        if (iconData.popupImg) {
+            const popupImage = document.createElement("img");
+            popupImage.src = iconData.popupImg;
+            popupImage.classList.add("popup-image");
+            popupContent.appendChild(popupImage);
+        }
 
-                randomX = Math.random() * (FRAME_WIDTH - iconWidth);
-                randomY = TOP_LIMIT + Math.random() * (FRAME_HEIGHT - TOP_LIMIT - iconHeight);
+        if (iconData.content) {
+            popupContent.innerHTML = iconData.content;
+        }
 
-                for (let other of placedIcons) {
-                    const rect = other.getBoundingClientRect();
-                    const frameRect = mobileFrame.getBoundingClientRect();
-
-                    const otherX = rect.left - frameRect.left;
-                    const otherY = rect.top - frameRect.top;
-                    const otherW = other.offsetWidth;
-                    const otherH = other.offsetHeight;
-
-                    if (
-                        randomX < otherX + otherW &&
-                        randomX + iconWidth > otherX &&
-                        randomY < otherY + otherH &&
-                        randomY + iconHeight > otherY
-                    ) {
-                        overlapping = true;
-                        break;
-                    }
-                }
-
-                attempts++;
-            } while (overlapping && attempts < 50);
-
-            img.style.left = `${randomX}px`;
-            img.style.top = `${randomY}px`;
-        };
-
-        img.addEventListener("click", () => {
-
-            // 🔹 팝업 내용 초기화
-            popupContent.innerHTML = "";
-
-            // 이미지가 있는 경우
-            if (iconData.popupImg) {
-                const popupImage = document.createElement("img");
-                popupImage.src = iconData.popupImg;
-                popupImage.classList.add("popup-image");
-                popupContent.appendChild(popupImage);
-            }
-
-            // 텍스트가 있는 경우
-            if (iconData.content) {
-                popupContent.innerHTML = iconData.content;
-            }
-
-            popupOverlay.style.display = "flex";
-            backBtn.classList.add("disabled");
-        });
-
-        mobileFrame.appendChild(img);
+        popupOverlay.style.display = "flex";
+        backBtn.classList.add("disabled");
     });
+
+    mobileFrame.appendChild(img);
+});
 
             closePopup.addEventListener("click", () => {
             popupOverlay.style.display = "none";

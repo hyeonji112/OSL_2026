@@ -34,7 +34,8 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease;
     z-index: 1;
-    width: 112px;
+
+    width: 80px;   /* 112 → 80으로 축소 */
     height: auto;
 }
 
