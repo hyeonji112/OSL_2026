@@ -25,7 +25,7 @@ if (mobileFrame) {
         },
         { 
             src: "img/icon5.png", 
-            content: "아이콘 5 내용<br>".repeat(22) 
+            link: "https://docs.google.com/forms/d/1DUhzEr25592vb4iU0JfiDCLGR1sdZ6SewLRtSb6WErk/edit" 
         }
     ];
 
@@ -38,19 +38,26 @@ icons.forEach((iconData, index) => {
     img.src = iconData.src;
     img.classList.add("icon");
 
-    // 📌 Figma 좌표 0.5배 적용
     const positions = [
-        { left: 603 * 0.5, top: 556 * 0.5 },  // icon1 (일러스트2 3)
-        { left: 191 * 0.5, top: 434 * 0.5 },  // icon2 (일러스트2 1)
-        { left: 110 * 0.5, top: 1286 * 0.5 }, // icon3 (일러스트2 4)
-        { left: 37 * 0.5,  top: 747 * 0.5 },  // icon4 (일러스트2 6)
-        { left: 640 * 0.5, top: 1206 * 0.5 }  // icon5 (일러스트2 5)
+        { left: 603 * 0.5, top: 620 * 0.5 },  
+        { left: 191 * 0.5, top: 500 * 0.5 },  
+        { left: 110 * 0.5, top: 1286 * 0.5 }, 
+        { left: 37 * 0.5,  top: 790 * 0.5 },  
+        { left: 630 * 0.5, top: 1206 * 0.5 }  
     ];
 
     img.style.left = `${positions[index].left}px`;
     img.style.top = `${positions[index].top}px`;
 
     img.addEventListener("click", () => {
+
+        // 🔹 링크가 있는 경우 → 바로 이동
+        if (iconData.link) {
+            window.location.href = iconData.link;
+            return;
+        }
+
+        // 🔹 기존 팝업 로직
         popupContent.innerHTML = "";
 
         if (iconData.popupImg) {

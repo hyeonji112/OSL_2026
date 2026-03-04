@@ -58,13 +58,14 @@ body {
 
 .popup {
     width: 85%;
-    height: 80%;
+    height: 78%;
     background: white;
     border-radius: 20px;
     position: relative;
     padding: 30px;
     display: flex;
     flex-direction: column;
+    top: 7%;
 }
 
 /* 스크롤 영역 */
