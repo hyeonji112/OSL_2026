@@ -17,11 +17,11 @@ if (mobileFrame) {
         },
         { 
             src: "img/icon3.png", 
-            content: "아이콘 3 내용<br>".repeat(30) 
+            popupImg: "img/icon3-1.png" 
         },
         { 
             src: "img/icon4.png", 
-            content: "아이콘 4 내용<br>".repeat(18) 
+            popupImg: "img/icon4-1.png" 
         },
         { 
             src: "img/icon5.png", 
@@ -53,7 +53,7 @@ icons.forEach((iconData, index) => {
 
         // 🔹 링크가 있는 경우 → 바로 이동
         if (iconData.link) {
-            window.location.href = iconData.link;
+            window.open(iconData.link, "_https://docs.google.com/forms/d/1DUhzEr25592vb4iU0JfiDCLGR1sdZ6SewLRtSb6WErk/edit");
             return;
         }
 
