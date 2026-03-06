@@ -17,7 +17,7 @@ if (mobileFrame) {
         },
         { 
             src: "img/icon3.png", 
-            popupImg: "img/icon3-1.png" 
+        
         },
         { 
             src: "img/icon4.png", 
