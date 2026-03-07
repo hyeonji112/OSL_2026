@@ -17,7 +17,7 @@ if (mobileFrame) {
         },
         { 
             src: "img/icon3.png", 
-        
+            popupImg: "img/icon3-1.png" 
         },
         { 
             src: "img/icon4.png", 
@@ -51,13 +51,11 @@ icons.forEach((iconData, index) => {
 
     img.addEventListener("click", () => {
 
-        // 🔹 링크가 있는 경우 → 바로 이동
         if (iconData.link) {
-            window.open(iconData.link, "_https://docs.google.com/forms/d/1DUhzEr25592vb4iU0JfiDCLGR1sdZ6SewLRtSb6WErk/edit");
+            window.open(iconData.link, "https://docs.google.com/forms/d/1DUhzEr25592vb4iU0JfiDCLGR1sdZ6SewLRtSb6WErk/edit");
             return;
         }
 
-        // 🔹 기존 팝업 로직
         popupContent.innerHTML = "";
 
         if (iconData.popupImg) {

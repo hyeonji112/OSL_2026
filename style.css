@@ -34,7 +34,6 @@ body {
     cursor: pointer;
     transition: transform 0.2s ease;
     z-index: 1;
-
     width: 80px;   /* 112 → 80으로 축소 */
     height: auto;
 }
@@ -43,7 +42,7 @@ body {
     transform: scale(0.9);
 }
 
-/* ===== 팝업 ===== */
+/* 팝업 */
 
 .popup-overlay {
     position: absolute;
@@ -53,7 +52,7 @@ body {
     justify-content: center;
     align-items: center;
 
-    z-index: 999; /* 가장 위로 */
+    z-index: 999;
 }
 
 .popup {
@@ -75,7 +74,7 @@ body {
 }
 
 .popup-image {
-    width: 100%;          /* 여백 제외 영역에 맞춤 */
+    width: 100%;
     height: auto;
     display: block;
 }
@@ -91,8 +90,7 @@ body {
     cursor: pointer;
 }
 
-/* ===== index 버튼 영역 ===== */
-
+/* index 버튼 */
 .button-container {
     position: absolute;
     top: 50%;
@@ -129,7 +127,7 @@ body {
     transform: scale(0.97);
 }
 
-/* ===== 뒤로가기 버튼 ===== */
+/* 뒤로가기 버튼 */
 
 .back-btn {
     position: absolute;
@@ -166,6 +164,6 @@ body {
 /* 팝업 열릴 때 뒤로가기 버튼 비활성화 */
 
 .back-btn.disabled {
-    opacity: 0.3;              /* 어둡게 */
-    pointer-events: none;      /* 클릭 막기 */
+    opacity: 0.3;           
+    pointer-events: none;    
 }
